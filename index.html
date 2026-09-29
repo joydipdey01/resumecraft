@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ResumeCraft — Resume & CV Builder</title>
+<meta name="description" content="Build a professional, ATS-friendly resume or CV with or without a photo. Choose a template, set your colours, and download as PDF, Word or HTML.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F4D3A'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23B8893B' font-family='Georgia' font-weight='bold'%3ER%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--g:#1F4D3A;--gd:#153629;--ink:#1F2933;--bg:#F7F4EE;--br:#B8893B;--sl:#5B6770;--line:#DDD8CC;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Merriweather,Georgia,serif;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.logo{font:900 20px Merriweather,serif;color:var(--g)}.logo i{color:var(--br);font-style:normal}
+.btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;gap:10px;align-items:center;border:1.5px solid var(--g);background:var(--g);color:#fff;padding:13px 24px;font:600 15px Inter,sans-serif;cursor:pointer;border-radius:10px;transition:color .25s ease-out,transform .15s ease-out}
+.btn::before{content:"";position:absolute;inset:0;background:var(--br);transform:scaleX(0);transform-origin:left;transition:transform .3s ease-out;z-index:-1}
+.btn:hover::before,.btn:focus-visible::before{transform:scaleX(1)}
+.btn:hover{color:var(--ink)}.btn:active{transform:scale(.97)}
+.btn .ar{transition:transform .25s ease-out}.btn:hover .ar{transform:translateX(5px)}
+.btn.ghost{background:transparent;color:var(--g)}.btn.ghost:hover{color:var(--ink);border-color:var(--br)}
+.btn.ok{background:var(--g);color:#fff}
+:focus-visible{outline:2px solid var(--br);outline-offset:2px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:64px 0 80px}
+.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.1;color:var(--g)}
+.hero p{max-width:480px;color:var(--sl);font-size:18px;margin:22px 0 32px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--br);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--br)}
+.sample{height:520px;overflow:hidden;border:1px solid var(--line);background:#fff;transform:rotate(1.2deg)}
+.fade{animation:rise .5s ease-out both}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:56px 0}
+.card{text-align:left;background:#fff;border:1px solid var(--line);padding:32px;cursor:pointer;font:inherit;color:inherit;transition:border-color .25s,transform .25s;border-radius:10px}
+.card:hover{border-color:var(--br);transform:translateY(-3px)}
+.card h2{font-size:22px;color:var(--g);margin:14px 0 8px}.card p{color:var(--sl);margin:0}
+.tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--br);font-weight:600}
+.app{display:grid;grid-template-columns:minmax(0,460px) 1fr;gap:32px;padding:28px 0 60px;align-items:start}
+.bar{height:3px;background:var(--line);margin-bottom:8px}.bar div{height:100%;background:var(--g);transition:width .3s ease-out}
+.steps{display:flex;gap:6px;flex-wrap:wrap;font-size:13px;color:var(--sl);margin-bottom:18px}.steps b{color:var(--g)}
+.form h2{font-size:24px;margin-bottom:18px;color:var(--g)}
+label{display:block;font-size:13px;font-weight:600;color:var(--sl);margin-bottom:14px}
+input,textarea,select{display:block;width:100%;margin-top:5px;padding:10px 12px;border:1px solid var(--line);background:#fff;font:15px Inter,sans-serif;color:var(--ink);border-radius:10px;transition:border-color .2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--g)}
+textarea{min-height:84px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.item{border:1px solid var(--line);padding:16px;margin-bottom:14px;background:#fff;animation:rise .3s ease-out}
+.rm{background:none;border:0;color:var(--sl);cursor:pointer;font-size:13px;text-decoration:underline;float:right}
+.nav2{display:flex;justify-content:space-between;margin-top:26px;gap:10px}
+.opts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.chip{border:1px solid var(--line);background:#fff;padding:8px 14px;cursor:pointer;font:500 14px Inter;border-radius:10px;transition:all .2s}
+.chip.on{border-color:var(--g);background:var(--g);color:#fff}
+.sw{width:22px;height:22px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}.sw.on{box-shadow:0 0 0 2px var(--ink)}
+.pv{position:sticky;top:16px;background:#E9E5DA;padding:16px;overflow:hidden}
+.pvin{width:794px;transform-origin:top left}
+.card,.item,.pv,.sample{border-radius:16px}.sample{overflow:hidden}.chip{border-radius:999px}.card:hover{box-shadow:0 12px 28px rgba(31,41,51,.08)}
+.btn{border-radius:999px;transition:transform .2s ease-out,box-shadow .25s ease-out,background .25s ease-out}
+.btn::before{background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s ease-out}
+.btn:hover::before,.btn:focus-visible::before{transform:translateX(120%)}
+.btn:hover{color:#fff;background:var(--gd);transform:translateY(-2px);box-shadow:0 8px 20px rgba(31,77,58,.25)}
+.btn:active{transform:translateY(0) scale(.97);box-shadow:none}
+.btn.ghost{background:transparent;color:var(--g)}.btn.ghost:hover{background:rgba(31,77,58,.08);color:var(--g);box-shadow:none;border-color:var(--g)}
+nav{border-bottom:1px solid var(--br)}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0;color:var(--sl);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}footer p{margin:6px 0 0;max-width:460px}
+footer a{color:var(--g);font-weight:600;text-underline-offset:3px}footer a:hover{color:var(--br)}
+#gate{position:fixed;inset:0;z-index:50;background:rgba(31,41,51,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+#gate[hidden]{display:none}body.lock #gate{background:var(--bg)}body.lock>*:not(#gate){display:none!important}
+.dlg{background:#fff;border:1px solid var(--line);border-radius:20px;max-width:660px;width:100%;max-height:90vh;display:flex;flex-direction:column;padding:28px;box-shadow:0 20px 50px rgba(0,0,0,.15);animation:rise .35s ease-out}
+.dlg h2{color:var(--g);font-size:26px}.dlg .pt{overflow:auto;margin:14px 0;padding-right:8px;font-size:14px}
+.pt h4{font:700 14px Inter,sans-serif;color:var(--g);margin:16px 0 4px}.pt p{margin:0 0 6px}.sm{color:var(--sl);font-size:13px;margin:6px 0 0}
+</style><style id="pcss">.paper{width:794px;min-height:1123px;background:#fff;color:var(--tx);font:13px/1.5 'Source Sans 3',Inter,sans-serif;padding:48px 52px}
+.paper h1{font:900 34px/1.15 Merriweather,Georgia,serif;color:var(--a);margin:0}
+.paper .t{font-size:16px;opacity:.75;margin:4px 0 8px;font-weight:500}
+.paper .ct{font-size:12px;opacity:.8;display:flex;flex-wrap:wrap;gap:4px 16px}
+.paper h3{font:700 12px Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--a);border-bottom:1.5px solid var(--b);padding-bottom:3px;margin:20px 0 9px}
+.paper .e{margin-bottom:9px}.paper .e b{font-weight:700}.paper .m{opacity:.75;font-size:12px}
+.paper ul{margin:3px 0 0;padding-left:18px}.paper p{margin:0}
+.paper .hd{display:flex;gap:22px;align-items:center;border-bottom:3px solid var(--a);padding-bottom:16px}
+.ph{width:104px;height:104px;border-radius:50%;object-fit:cover;flex:none;background:#eee;border:2px solid var(--b)}
+.paper.side,.paper.dark,.paper.right{padding:0;display:grid;grid-template-columns:250px 1fr}
+.paper.right{grid-template-columns:1fr 250px}.paper.right aside{order:2}
+.paper aside{padding:40px 24px;background:#F0EEE8}.paper .mn{padding:40px 34px}
+.paper.dark aside{background:var(--a);color:#fff}.paper.dark aside h3{color:#fff;border-color:rgba(255,255,255,.4)}
+.paper aside .ct{display:block}.paper aside .ph{display:block;margin:0 auto 22px}
+.paper.exec{font-family:Merriweather,Georgia,serif;font-size:12px}.paper.exec .hd{flex-direction:column;text-align:center;border:0}.paper.exec .ct{justify-content:center}
+.paper.banner .hd{background:var(--a);margin:-48px -52px 0;padding:36px 52px;border:0}.paper.banner .hd *{color:#fff}
+.paper.bold h1{font-size:42px}.paper.bold h3{border:0;border-left:5px solid var(--a);padding:3px 0 3px 10px;background:#F3F1EB}
+</style><style>
+@media(max-width:900px){.hero,.choice,.app{grid-template-columns:1fr}.sample{height:380px}.pv{position:static}}
+html,body{overflow-x:hidden}input[type=color]{height:42px;padding:3px}@media(max-width:560px){.wrap{padding:0 16px}.row2{grid-template-columns:1fr}.hero{padding:36px 0 48px;gap:32px}.card{padding:22px}.pv{padding:8px}.nav2 .btn{flex:1;justify-content:center}input,textarea{font-size:16px}.item{padding:12px}}
+@media print{*{-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4;margin:0}body{background:#fff}.np{display:none!important}.pv{padding:0;background:none;position:static}.pvin{transform:none!important;width:auto}.paper{width:210mm;min-height:297mm}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body class="lock">
+<div class="wrap np"><nav><span class="logo">Resume<i>Craft</i></span><button class="btn ghost" id="home">Start over</button></nav></div>
+
+<main class="wrap np" id="v0"><div class="hero fade"><div>
+<div class="eyebrow">Resume &amp; CV builder</div>
+<h1>A resume that gets past the screen and onto the desk.</h1>
+<p>Enter your details once. ResumeCraft lays them out in a clean, recruiter-approved format with real, selectable text that applicant tracking systems can read.</p>
+<button class="btn" data-go="1">Build my resume <span class="ar">→</span></button></div>
+<div class="sample" id="sample"></div></div></main>
+
+<main class="wrap np" id="v1" hidden><div class="fade" style="padding-top:56px"><div class="eyebrow">Step one</div><h1 style="color:var(--g);font-size:36px">Choose your format</h1></div>
+<div class="choice"><button class="card" data-mode="nophoto"><span class="tag">Recommended for corporate &amp; international roles</span><h2>Resume without photo</h2><p>ATS-safe, compact and neutral. No photo space is reserved in the layout.</p></button>
+<button class="card" data-mode="photo"><span class="tag">Common for CVs in many regions</span><h2>Resume with photo</h2><p>Upload a portrait, auto-cropped to a clean circle and placed in the header.</p></button></div></main>
+
+<main class="wrap" id="v2" hidden><div class="app">
+<div class="form np"><div class="bar"><div id="prog"></div></div><div class="steps" id="stp"></div><div id="fm"></div>
+<div class="nav2"><button class="btn ghost" id="bk">← Back</button><button class="btn" id="nx">Next <span class="ar">→</span></button></div></div>
+<div class="pv"><div id="fit"><div class="pvin" id="pv"></div></div></div></div></main>
+
+<footer class="np"><div class="wrap"><div><span class="logo">Resume<i>Craft</i></span><p>&copy; <span id="yr"></span> ResumeCraft. Owned and operated by <b>Joydip Dey</b>. All rights reserved.</p><p><a href="#" id="pp">Privacy Policy</a></p></div>
+<div><p>If you face any problem, feel free to contact us at <a href="mailto:deyjoydip12@gmail.com">deyjoydip12@gmail.com</a>.</p></div></div></footer>
+<div id="gate" class="np" hidden></div>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const SAMPLE={name:'Joydip Dey',title:'Frontend Developer',email:'joydip.dey@email.com',phone:'+91 98765 43210',location:'Kolkata, India',links:'linkedin.com/in/joydipdey · github.com/joydipdey',photo:'',
+summary:'Detail-oriented computer applications graduate with hands-on experience building responsive web apps in React. Focused on clean code, accessibility and measurable user impact.',
+exp:[{role:'Frontend Intern',company:'Bluepeak Technologies',period:'Jun 2025 – Dec 2025',points:'Built 12 reusable React components used across 3 products\nCut page load time by 35% through code splitting and image optimisation\nCollaborated with designers to ship a new onboarding flow'}],
+edu:[{degree:'Bachelor of Computer Applications',school:'University of Calcutta',year:'2023 – 2026',score:'CGPA 8.6'}],
+proj:[{name:'Campus Events Portal',tech:'React, Node.js, MongoDB',desc:'Event listing and registration platform used by 800+ students.'}],
+skills:'JavaScript, React, HTML/CSS, Node.js, Git, SQL, Communication, Teamwork',langs:'English, Hindi, Bengali',certs:'Meta Front-End Developer Certificate (Coursera)'};
+let S={mode:'nophoto',tpl:'classic',hc:'#1F4D3A',tc:'#1F2933',step:0,d:JSON.parse(JSON.stringify(SAMPLE))};
+try{const x=JSON.parse(localStorage.getItem('rc3')||'null');if(x)S=x}catch(e){}
+const save=()=>{try{localStorage.setItem('rc3',JSON.stringify(S))}catch(e){}};
+const list=t=>String(t||'').split(/[,\n]/).map(x=>x.trim()).filter(Boolean);
+const sec=(t,b)=>b?`<section><h3>${t}</h3>${b}</section>`:'';
+function paper(d,o){const a=o.hc,tx=o.tc,ph=o.mode==='photo'?(d.photo?`<img class="ph" src="${d.photo}" alt="">`:`<div class="ph"></div>`):'';
+const contact=[d.email,d.phone,d.location,...list(d.links.replace(/·/g,','))].filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join('');
+const exp=d.exp.filter(e=>e.role||e.company).map(e=>`<div class="e"><b>${esc(e.role)}</b>${e.company?', '+esc(e.company):''}<div class="m">${esc(e.period)}</div><ul>${String(e.points).split('\n').filter(x=>x.trim()).map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`).join('');
+const edu=d.edu.filter(e=>e.degree||e.school).map(e=>`<div class="e"><b>${esc(e.degree)}</b><div class="m">${esc(e.school)} · ${esc(e.year)} ${e.score?'· '+esc(e.score):''}</div></div>`).join('');
+const proj=d.proj.filter(e=>e.name).map(e=>`<div class="e"><b>${esc(e.name)}</b> <span class="m">${esc(e.tech)}</span><p>${esc(e.desc)}</p></div>`).join('');
+const sk=list(d.skills).join(' · '),lg=list(d.langs).join(', '),ce=list(d.certs).map(x=>`<p>${esc(x)}</p>`).join('');
+const st=`style="--a:${a};--tx:${tx};--b:#B8893B"`;
+if(['side','dark','right'].includes(o.tpl))return `<div class="paper ${o.tpl}" ${st}><aside>${ph}<h3 style="margin-top:0">Contact</h3><div class="ct">${contact.replace(/<\/span><span>/g,'</span><br><span>')}</div>${sec('Skills',`<p>${esc(sk).replace(/ · /g,'<br>')}</p>`)}${sec('Languages',esc(lg))}</aside><div class="mn"><h1>${esc(d.name)}</h1><div class="t">${esc(d.title)}</div>${sec('Profile',`<p>${esc(d.summary)}</p>`)}${sec('Experience',exp)}${sec('Projects',proj)}${sec('Education',edu)}${sec('Certifications',ce)}</div></div>`;
+return `<div class="paper ${o.tpl}" ${st}><div class="hd">${ph}<div><h1>${esc(d.name)}</h1><div class="t">${esc(d.title)}</div><div class="ct">${contact}</div></div></div>${sec('Professional Summary',`<p>${esc(d.summary)}</p>`)}${sec('Experience',exp)}${sec('Projects',proj)}${sec('Education',edu)}${sec('Skills',`<p>${esc(sk)}</p>`)}${sec('Certifications',ce)}${sec('Languages',`<p>${esc(lg)}</p>`)}</div>`}
+function fit(){const box=$('#fit'),pv=$('#pv');if(!box.offsetWidth)return;const k=Math.min(1,box.offsetWidth/794);pv.style.transform=`scale(${k})`;box.style.height=(pv.offsetHeight*k)+'px'}
+function upd(){$('#pv').innerHTML=paper(S.d,S);fit();save()}
+const I=(l,k,t='text')=>`<label>${l}<input type="${t}" data-k="${k}" value="${esc(S.d[k])}"></label>`;
+const T=(l,k)=>`<label>${l}<textarea data-k="${k}">${esc(S.d[k])}</textarea></label>`;
+function L(n,title,f,add){return `<h2>${title}</h2>`+S.d[n].map((it,i)=>`<div class="item"><button class="rm" data-rm="${n}:${i}">Remove</button>${f.map(([k,l,t])=>t?`<label>${l}<textarea data-l="${n}" data-i="${i}" data-k="${k}">${esc(it[k])}</textarea></label>`:`<label>${l}<input data-l="${n}" data-i="${i}" data-k="${k}" value="${esc(it[k])}"></label>`).join('')}</div>`).join('')+`<button class="btn ghost" data-add="${n}">+ Add ${add}</button>`}
+const STEPS=['Personal','Experience','Education','Skills','Style & download'];
+function form(){const s=S.step;let h='';
+if(s==0)h=`<h2>Personal details</h2>${S.mode==='photo'?`<label>Photo<input type="file" accept="image/*" id="pic"></label>`:''}${I('Full name','name')}${I('Professional title','title')}<div class="row2">${I('Email','email','email')}${I('Phone','phone')}</div>${I('City, country','location')}${I('Links (LinkedIn, GitHub, portfolio)','links')}${T('Professional summary','summary')}`;
+if(s==1)h=L('exp','Work experience & internships',[['role','Role'],['company','Company'],['period','Duration'],['points','Achievements (one per line)',1]],'experience');
+if(s==2)h=L('edu','Education',[['degree','Degree'],['school','University / college'],['year','Year'],['score','CGPA / percentage']],'education')+'<div style="height:24px"></div>'+L('proj','Projects',[['name','Title'],['tech','Tech used'],['desc','Description',1]],'project');
+if(s==3)h=`<h2>Skills & extras</h2>${T('Skills (comma separated)','skills')}${T('Languages known','langs')}${T('Certifications (one per line)','certs')}`;
+if(s==4)h=`<h2>Template</h2><div class="opts">${TP.map(([k,n])=>`<button class="chip ${S.tpl==k?'on':''}" data-tpl="${k}">${n}</button>`).join('')}</div><h2 style="font-size:18px">Colours</h2><div class="row2"><label>Heading colour<input type="color" data-c="hc" value="${S.hc}"></label><label>Text colour<input type="color" data-c="tc" value="${S.tc}"></label></div><div class="opts">${['#1F4D3A','#14213D','#B5651D','#7A2E2E','#1F2933'].map(c=>`<button class="sw" data-p="${c}" style="background:${c}" aria-label="Heading preset ${c}"></button>`).join('')}</div><h2 style="font-size:18px">Download</h2><div class="opts"><button class="btn" data-dl="pdf">PDF <span class="ar">↓</span></button><button class="btn ghost" data-dl="doc">Word</button><button class="btn ghost" data-dl="html">HTML</button></div><p style="color:var(--sl);font-size:14px">For PDF choose <b>Save as PDF</b> in the print dialog (A4, margins none). Word opens as an editable .doc using a single-column layout.</p>`;
+$('#fm').innerHTML=`<div class="fade">${h}</div>`;$('#stp').innerHTML=STEPS.map((x,i)=>i==s?`<b>${i+1}. ${x}</b>`:`<span>${i+1}. ${x}</span>`).join(' / ');
+$('#prog').style.width=((s+1)/STEPS.length*100)+'%';$('#bk').style.visibility=s?'visible':'hidden';$('#nx').style.display=s==4?'none':'inline-flex'}
+function view(n){[0,1,2].forEach(i=>$('#v'+i).hidden=i!=n);if(n==2){form();upd()}window.scrollTo(0,0)}
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;
+if(t.dataset.go)view(+t.dataset.go);
+if(t.dataset.mode){S.mode=t.dataset.mode;S.step=0;view(2)}
+if(t.id=='home')view(0);if(t.id=='nx'){S.step++;form()}if(t.id=='bk'){S.step--;form()}
+if(t.dataset.add){S.d[t.dataset.add].push({});form();upd()}
+if(t.dataset.rm){const[n,i]=t.dataset.rm.split(':');S.d[n].splice(+i,1);form();upd()}
+if(t.dataset.tpl){S.tpl=t.dataset.tpl;form();upd()}if(t.dataset.p){S.hc=t.dataset.p;form();upd()}
+if(t.dataset.dl)dl(t.dataset.dl)});
+document.addEventListener('input',e=>{const t=e.target,d=t.dataset;if(d.c){S[d.c]=t.value;upd();return}if(!d.k)return;if(d.l)S.d[d.l][+d.i][d.k]=t.value;else S.d[d.k]=t.value;upd()});
+document.addEventListener('change',e=>{if(e.target.id!='pic'||!e.target.files[0])return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),z=Math.min(im.width,im.height);c.width=c.height=320;c.getContext('2d').drawImage(im,(im.width-z)/2,(im.height-z)/2,z,z,0,0,320,320);S.d.photo=c.toDataURL('image/jpeg',.85);upd()};im.src=r.result};r.readAsDataURL(e.target.files[0])});
+const TP=[['classic','Classic'],['side','Light sidebar'],['dark','Colour sidebar'],['right','Right sidebar'],['exec','Minimal executive'],['banner','Banner header'],['bold','Bold headings']];
+function dl(k){if(k=='pdf'){window.print();return}const w=k=='doc',nm=(S.d.name||'resume').replace(/\W+/g,'_'),tp=w&&['side','dark','right'].includes(S.tpl)?'classic':S.tpl;
+const css=$('#pcss').textContent.replace(/var\(--a\)/g,S.hc).replace(/var\(--tx\)/g,S.tc).replace(/var\(--b\)/g,'#B8893B');
+const h=`<!DOCTYPE html><html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>${esc(S.d.name)}</title>${w?'':'<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">'}<style>@page{size:A4;margin:0}body{margin:0;background:#eee}.paper{margin:0 auto}${css}@media print{body{background:#fff}}</style></head><body>${paper(S.d,{...S,tpl:tp})}<\/body><\/html>`;
+const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([w?'\ufeff'+h:h],{type:w?'application/msword':'text/html'}));a.download=nm+(w?'.doc':'.html');document.body.append(a);a.click();a.remove()}
+addEventListener('resize',fit);
+$('#sample').innerHTML=`<div style="zoom:.62">${paper(SAMPLE,{tpl:'classic',hc:'#1F4D3A',tc:'#1F2933',mode:'nophoto'})}</div>`;
+
+const POLICY=`<p>This Privacy Policy explains how ResumeCraft, owned and operated by Joydip Dey ("we", "us"), handles information when you use this website. By clicking "Accept" you agree to it.</p>
+<h4>1. Information you provide</h4><p>To build your resume you may enter personal details such as your name, contact details, education, work history, skills and an optional photo. You choose what to enter.</p>
+<h4>2. How your information is stored</h4><p>ResumeCraft runs in your browser. The details you enter are kept only in your own browser's local storage on your device. We do not upload, collect or store your resume data on our servers, and we do not sell or share it.</p>
+<h4>3. How we use information</h4><p>Your details are used only to display your resume preview and to create the PDF, Word or HTML file you download. Nothing is used for advertising or profiling.</p>
+<h4>4. Cookies and local storage</h4><p>We do not use tracking or advertising cookies. We use local storage to save your progress and to remember that you accepted this policy.</p>
+<h4>5. Third-party services</h4><p>The site loads fonts from Google Fonts, which may receive your IP address and browser details under Google's own privacy policy. Our hosting provider may keep standard server logs such as IP address and page requests.</p>
+<h4>6. Security</h4><p>Because your data stays on your device, its safety also depends on your device. Avoid entering sensitive details on shared computers, and clear your browser data when you finish.</p>
+<h4>7. Your choices and rights</h4><p>You can edit or delete your information at any time by clearing your browser's site data. You may contact us with any privacy question or request.</p>
+<h4>8. Children</h4><p>ResumeCraft is not directed at children under 13, and we do not knowingly collect their information.</p>
+<h4>9. Changes to this policy</h4><p>We may update this policy from time to time. The effective date below shows the latest version.</p>
+<h4>10. Contact</h4><p>Joydip Dey, <a href="mailto:deyjoydip12@gmail.com">deyjoydip12@gmail.com</a>.</p>`;
+const G=$('#gate');
+function pol(m){G.hidden=false;G.innerHTML=`<div class="dlg" role="dialog" aria-modal="true" aria-labelledby="gt"><h2 id="gt">Privacy Policy</h2><p class="sm">Effective 29 September 2026</p><div class="pt">${POLICY}</div><div class="nav2">${m=='c'?'<button class="btn ghost" id="deny">Deny</button><button class="btn" id="acc">Accept &amp; continue <span class="ar">→</span></button>':'<span></span><button class="btn" id="cls">Close</button>'}</div></div>`}
+document.addEventListener('click',e=>{const t=e.target.closest('button,a');if(!t)return;
+if(t.id=='acc'){try{localStorage.setItem('rc_ok','1')}catch(x){}document.body.classList.remove('lock');G.hidden=true;upd&&fit()}
+if(t.id=='deny')G.innerHTML='<div class="dlg"><h2>Access denied</h2><p style="margin:12px 0">You chose not to accept the Privacy Policy, so ResumeCraft cannot be opened. If you change your mind, you can review the policy again.</p><div class="nav2"><span></span><button class="btn" id="again">Review policy</button></div></div>';
+if(t.id=='again')pol('c');if(t.id=='cls')G.hidden=true;if(t.id=='pp'){e.preventDefault();pol('v')}});
+$('#yr').textContent=new Date().getFullYear();
+let ok=false;try{ok=localStorage.getItem('rc_ok')=='1'}catch(x){}
+if(ok)document.body.classList.remove('lock');else pol('c');
+</script></body></html>
